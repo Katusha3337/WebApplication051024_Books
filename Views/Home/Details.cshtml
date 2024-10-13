@@ -1,0 +1,22 @@
+﻿@model Book
+@{
+    ViewBag.Title = @Model.Title;
+}
+<h2>@Model.Title</h2>
+<p><strong>Автор:</strong> @Model.Author</p>
+<p><strong>Жанр:</strong> @Model.Genre</p>
+<p><strong>Цена:</strong> $@Model.Price</p>
+
+<h3>Комментарии</h3>
+<ul>
+    @foreach (var comment in Model.Comments)
+    {
+        <li>@comment.Text</li>
+    }
+</ul>
+
+<form asp-action="AddComment" method="post">
+    <input type="hidden" name="bookId" value="@Model.Id" />
+    <textarea name="text"></textarea>
+    <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+</form>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Book>
+<h2>Каталог книг</h2>
+<ul class="list-group">
+    @foreach (var book in Model)
+    {
+        <li class="list-group-item">
+            <div>
+                <strong>@book.Title от @book.Author</strong>
+                <div>
+                    <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
